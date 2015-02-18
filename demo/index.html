@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Carouselar</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="../dist/carouselar.css">
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../src/scripts/constants.js"></script>
+  <script src="../src/scripts/controllers.js"></script>
+  <script src="../src/scripts/directives.js"></script>
+  <script src="../src/scripts/module.js"></script>
+
+  <script src="index.js"></script>
+
+</head>
+<body ng-app="demoApp" ng-controller="demoMainController" ng-cloak>
+
+  <div class="demo-wrapper">
+    <carouselar max-image-count="3" images="demoImages"></carouselar>
+  </div>
+
+  <carouselar-image></carouselar-image>
+</body>
+</html>
