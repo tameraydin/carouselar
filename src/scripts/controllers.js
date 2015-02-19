@@ -6,6 +6,7 @@
     .controller('CarouselarController', [
       '$scope', '$timeout', '$window', 'CarouselarConstants',
       function($scope, $timeout, $window, CarouselarConstants) {
+        $scope.visibleImages = [];
         $scope.maxImageCount = 1;
         $scope.displayingImageCount = 0;
 
@@ -33,17 +34,32 @@
             $scope.activeSection = sectionIndex;
           }
 
+          // update container position & visible images:
           var pos;
           var imagePercentage = 100 / $scope.displayingImageCount;
+          var visibleImages = [];
+          var i;
 
           if ($scope.activeSection === $scope.sectionCount - 1) { // last section
             pos = ($scope.images.length - $scope.displayingImageCount) * imagePercentage;
 
+            for (i = 0; i < $scope.displayingImageCount + 1; i++) {
+              visibleImages.push($scope.images.length - i);
+            }
+
           } else {
-            pos = $scope.activeSection * $scope.displayingImageCount * imagePercentage;
+            var firstVisibleImageIndex = $scope.activeSection * $scope.displayingImageCount;
+
+            visibleImages.push(firstVisibleImageIndex);
+            for (i = 1; i < $scope.displayingImageCount; i++) {
+              visibleImages.push(firstVisibleImageIndex + i);
+            }
+
+            pos = firstVisibleImageIndex * imagePercentage;
           }
 
           $scope.containerPosition = 'translateX(-' + pos + '%)';
+          $scope.visibleImages = visibleImages;
         };
 
         $scope.resizeTimer = null;
@@ -69,11 +85,22 @@
           if (newValue) {
             $scope.sectionCount = Math.ceil(
               $scope.images.length / $scope.displayingImageCount);
-
-            //TODO: keep first image, find actual section
-            $scope.moveToSection($scope.activeSection);
-
+            $scope.moveToSection($scope.activeSection); //TODO: keep first image in sight
             $scope.singleImageWidth = (100 / newValue) + '%';
+          }
+        });
+
+        $scope.isImageVisible = function(imageIndex) {
+          return $scope.visibleImages.indexOf(imageIndex) > -1;
+        };
+      }
+    ])
+    .controller('CarouselarImageController', ['$scope',
+      function($scope) {
+        var unwatch = $scope.$watch('isVisible', function(isVisible) {
+          if (isVisible) {
+            console.log('request:', $scope.imgUrl);
+            unwatch();
           }
         });
       }

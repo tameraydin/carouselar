@@ -20,7 +20,9 @@
                 'ng-style="{\'transform\': containerPosition}">' +
                   '<div class="carouselar__image-container" ' +
                     'ng-style="{\'width\': singleImageWidth}" ' +
-                    'ng-repeat="image in images"' +
+                    'ng-repeat="image in images" ' +
+                    'is-visible="isImageVisible($index)" ' +
+                    'img-url="{{image}}" ' +
                     'carouselar-image>{{$index + 1}}' +
                   '</div>' +
                 '</div>' +
@@ -51,8 +53,11 @@
       function() {
         return {
           restrict: 'A',
-          scope: {},
-          link: function() {}
+          controller: 'CarouselarImageController',
+          scope: {
+            isVisible: '=',
+            imgUrl: '@'
+          }
         };
       }
     ]);
