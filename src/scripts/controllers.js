@@ -15,6 +15,10 @@
         $scope.containerPosition = 'translateX(0)';
         $scope.singleImageWidth = '100%';
 
+        $scope.createArray = function(num) {
+          return new Array(num);
+        };
+
         $scope.prev = function() {
           $scope.moveToSection($scope.activeSection - 1);
         };

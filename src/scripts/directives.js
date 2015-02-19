@@ -30,6 +30,15 @@
               '<div class="carouselar__navigation">' +
                 '<span class="carouselar__navigation__button ' +
                 'carouselar__navigation__button--prev" ng-click="prev()">PREV</span>' +
+                '<div class="carouselar__navigation__index">' +
+                  '<span class="carouselar__navigation__button ' +
+                    'carouselar__navigation__button--index" ' +
+                    'ng-repeat="i in createArray(sectionCount) track by $index" ' +
+                    'ng-class="{\'carouselar__navigation__button--active\':$index === activeSection}"' +
+                    'ng-click="moveToSection($index)">' +
+                      '{{$index + 1}}' +
+                  '</span>' +
+                '</div>' +
                 '<span class="carouselar__navigation__button ' +
                 'carouselar__navigation__button--next" ng-click="next()">NEXT</span>' +
               '</div>' +
