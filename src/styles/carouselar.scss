@@ -29,12 +29,6 @@ $transition-duration: 0.3s;
     height: 100%;
     transition: width $transition-duration;
 
-    &--grow-1 {width: 100%;}
-    &--grow-2 {width: 50%;}
-    &--grow-3 {width: 33.33%;}
-    &--grow-4 {width: 25%;}
-    &--grow-5 {width: 20%;}
-
     //TODO: remove
     box-sizing: border-box;
     padding: 40px;
