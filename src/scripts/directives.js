@@ -23,7 +23,7 @@
                     'ng-repeat="image in images" ' +
                     'is-visible="isImageVisible($index)" ' +
                     'img-url="{{image}}" ' +
-                    'carouselar-image>{{$index + 1}}' +
+                    'carouselar-image>' +
                   '</div>' +
                 '</div>' +
               '</div>' +
@@ -49,14 +49,39 @@
         };
       }
     ])
-    .directive('carouselarImage', [
-      function() {
+    .directive('carouselarImage', ['$compile',
+      function($compile) {
         return {
           restrict: 'A',
           controller: 'CarouselarImageController',
           scope: {
             isVisible: '=',
             imgUrl: '@'
+          },
+          template: '<div class="carouselar__loader" ng-if="isLoading"></div>',
+          link: function(scope, element) {
+            scope.compileImage = function() {
+              element.append(
+                '<img ' +
+                  'class="carouselar__image" ' +
+                  'carouselar-loader ' +
+                  'on-load="onLoad()" ' +
+                  'ng-src="{{imgUrl}}" />');
+              $compile(element.contents())(scope);
+            };
+          }
+        };
+      }
+    ])
+    .directive('carouselarLoader', [
+      function() {
+        return {
+          restrict: 'A',
+          scope: {
+            onLoad: '&'
+          },
+          link: function(scope, element) {
+            element.bind('load', scope.onLoad);
           }
         };
       }

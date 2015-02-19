@@ -97,9 +97,15 @@
     ])
     .controller('CarouselarImageController', ['$scope',
       function($scope) {
+        $scope.isLoading = true;
+        $scope.onLoad = function() {
+          $scope.isLoading = false;
+          $scope.$apply();
+        };
+
         var unwatch = $scope.$watch('isVisible', function(isVisible) {
           if (isVisible) {
-            console.log('request:', $scope.imgUrl);
+            $scope.compileImage();
             unwatch();
           }
         });
