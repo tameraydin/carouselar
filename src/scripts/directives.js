@@ -17,9 +17,9 @@
             '<div class="carouselar">' +
               '<div class="carouselar__container">' +
                 '<div class="carouselar__inner-container" ' +
-                'ng-style="{\'transform\': transform}">' +
-                  '<div class="carouselar__image-container ' +
-                  'carouselar__image-container--grow-1" ' +
+                'ng-style="{\'transform\': containerPosition}">' +
+                  '<div class="carouselar__image-container" ' +
+                    'ng-style="{\'width\': singleImageWidth}" ' +
                     'ng-repeat="image in images"' +
                     'carouselar-image>{{$index + 1}}' +
                   '</div>' +
@@ -51,17 +51,8 @@
       function() {
         return {
           restrict: 'A',
-          controller: 'CarouselarImageController',
-          link: function(scope, element) {
-            scope.$watch('$parent.displayingImageCount', function(newValue) {
-              if (newValue) {
-                // for smooth CSS transition via classes & testing purposes:
-                scope.adjustSizeClass(newValue, element[0]);
-                // or could be just:
-                // element.css('width', (100 / newValue) + '%');
-              }
-            });
-          }
+          scope: {},
+          link: function() {}
         };
       }
     ]);

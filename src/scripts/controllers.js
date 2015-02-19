@@ -11,7 +11,8 @@
 
         $scope.activeSection = 0;
         $scope.sectionCount = 5;
-        $scope.transform = 'translateX(0)';
+        $scope.containerPosition = 'translateX(0)';
+        $scope.singleImageWidth = '100%';
 
         $scope.prev = function() {
           $scope.moveToSection($scope.activeSection - 1);
@@ -42,7 +43,7 @@
             pos = $scope.activeSection * $scope.displayingImageCount * imagePercentage;
           }
 
-          $scope.transform = 'translateX(-' + pos + '%)';
+          $scope.containerPosition = 'translateX(-' + pos + '%)';
         };
 
         $scope.resizeTimer = null;
@@ -71,15 +72,10 @@
 
             //TODO: keep first image, find actual section
             $scope.moveToSection($scope.activeSection);
+
+            $scope.singleImageWidth = (100 / newValue) + '%';
           }
         });
-      }
-    ])
-    .controller('CarouselarImageController', ['$scope',
-      function($scope) {
-        $scope.adjustSizeClass = function(grow, domEl) {
-          domEl.className = domEl.className.replace(/(grow-).?/g, 'grow-' + grow);
-        };
       }
     ]);
 
