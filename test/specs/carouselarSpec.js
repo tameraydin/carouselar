@@ -2,23 +2,23 @@
 
 describe('Carouselar', function() {
 
-	beforeEach(module('carouselar'));
+  beforeEach(module('carouselar'));
 
-	var compiler,
-		scope,
-		rootScope,
-		controller,
-		element,
+  var compiler,
+    scope,
+    rootScope,
+    controller,
+    element,
     timeout,
     CarouselarConstants;
 
-	describe('CarouselarController', function() {
+  describe('CarouselarController', function() {
 
-		beforeEach(inject(function($injector, _$compile_, _$rootScope_, _$controller_) {
+    beforeEach(inject(function($injector, _$compile_, _$rootScope_, _$controller_) {
       CarouselarConstants = $injector.get('CarouselarConstants');
       timeout = $injector.get('$timeout');
-			compiler = _$compile_;
-			rootScope = _$rootScope_;
+      compiler = _$compile_;
+      rootScope = _$rootScope_;
       controller = _$controller_;
       scope = _$rootScope_.$new();
 
@@ -34,12 +34,12 @@ describe('Carouselar', function() {
       element = compiler(
         '<carouselar max-image-count="3" images="images"></carouselar>')(rootScope);
       rootScope.$digest();
-		}));
+    }));
 
-		it('should initialize properly', function() {
+    it('should initialize properly', function() {
       expect(scope.images.length).toBe(7);
       expect(element.isolateScope().maxImageCount).toBe(3);
-		});
+    });
 
     it('resize() should work', function() {
       // wide
@@ -120,7 +120,7 @@ describe('Carouselar', function() {
     });
 
     it('isImageVisible() should work', function() {
-      scope.visibleImages = [3,4];
+      scope.visibleImages = [3, 4];
       expect(scope.isImageVisible(3)).toBeTruthy();
       expect(scope.isImageVisible(4)).toBeTruthy();
       expect(scope.isImageVisible(2)).toBeFalsy();
@@ -131,5 +131,5 @@ describe('Carouselar', function() {
       expect(scope.createArray(2)).toEqual(new Array(2));
       expect(scope.createArray(null)).toEqual([]);
     });
-	});
+  });
 });

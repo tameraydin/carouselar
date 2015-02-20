@@ -135,9 +135,11 @@ gulp.task('test', function(cb) {
 gulp.task('e2e', function(cb) {
   return gulp.src([PATH.TEST + 'e2e/*.js'])
     .pipe(protractor({
-        configFile: path.join(__dirname, '/test/conf.js'),
-        args: ['--baseUrl', 'http://127.0.0.1:8000']
-    })).on('error', function(e) { throw e });
+      configFile: path.join(__dirname, '/test/conf.js'),
+      args: ['--baseUrl', 'http://127.0.0.1:8000']
+    })).on('error', function(e) {
+      throw e
+    });
 });
 
 gulp.task('build', ['clean'], function(cb) {
