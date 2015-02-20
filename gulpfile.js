@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
+var minifyCSS = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var header = require('gulp-header');
@@ -82,8 +83,18 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest(PATH.DIST));
 });
 
+gulp.task('minify', function() {
+  return gulp.src(PATH.DIST + pkg.name + '.css')
+    .pipe(minifyCSS())
+    .pipe(rename({
+      basename: pkg.name,
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest(PATH.DIST))
+});
+
 gulp.task('banner', function() {
-  return gulp.src(PATH.DIST + '*.js')
+  return gulp.src(PATH.DIST + '*')
     .pipe(header(BANNER, {
       pkg: pkg
     }))
@@ -113,7 +124,7 @@ gulp.task('test', function(cb) {
   var config = {
     configFile: path.join(__dirname, '/test/karma.conf.js')
   };
-  config.singleRun = false;
+  // config.singleRun = false;
 
   karma.start(config, function() {
     cb();
@@ -125,6 +136,7 @@ gulp.task('build', ['clean'], function(cb) {
     'sass',
     'concat',
     'uglify',
+    'minify',
     'banner',
     cb);
 });
