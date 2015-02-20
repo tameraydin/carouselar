@@ -45,7 +45,7 @@
   "_resolution": {
     "type": "version",
     "tag": "0.1.0",
-    "commit": "08b83db5884655cf2338050e3d724638ee1cdf0b"
+    "commit": "2f6ab9eb793b4a400a46f69c9ffce95a4be7f6ec"
   },
   "_source": "git://github.com/tameraydin/carouselar.git",
   "_target": "~0.1.0",

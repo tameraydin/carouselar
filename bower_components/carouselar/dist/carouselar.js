@@ -10,7 +10,7 @@
     .module('carouselar.constants', [])
     .constant('CarouselarConstants', {
       RESIZE_TIMEOUT: 300,
-      MAX_DISPLAYED_IMAGE: 5,
+      MAX_DISPLAYING_IMAGE: 5,
       BREAKPOINTS: {
         LANDSCAPE: 960,
         PORTRAIT: 640
@@ -186,7 +186,7 @@
             '</div>',
           link: function(scope, element, attrs) {
             scope.maxImageCount = Math.min(
-              parseInt(attrs.maxImageCount), CarouselarConstants.MAX_DISPLAYED_IMAGE) || 1;
+              parseInt(attrs.displayingImageCount), CarouselarConstants.MAX_DISPLAYING_IMAGE) || 1;
 
             var win = angular.element($window);
             win.bind('resize', scope.onResize);
