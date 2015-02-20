@@ -8,6 +8,5 @@ before_install:
 install: npm install
 before_script:
   - bower install
-  - webdriver-manager start
 script: gulp
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
