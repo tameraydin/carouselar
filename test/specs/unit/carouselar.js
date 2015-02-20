@@ -10,35 +10,48 @@ describe('Carouselar', function() {
     controller,
     element,
     timeout,
-    CarouselarConstants;
+    CarouselarConstants,
+    win = angular.element(window);
 
   describe('CarouselarController', function() {
 
-    beforeEach(inject(function($injector, _$compile_, _$rootScope_, _$controller_) {
-      CarouselarConstants = $injector.get('CarouselarConstants');
-      timeout = $injector.get('$timeout');
-      compiler = _$compile_;
-      rootScope = _$rootScope_;
-      controller = _$controller_;
-      scope = _$rootScope_.$new();
-
-      controller('CarouselarController', {
-        $scope: scope,
-        $rootScope: rootScope,
-        CarouselarConstants: CarouselarConstants
+    beforeEach(function() {
+      module(function($provide) {
+        $provide.value('$window', win);
       });
 
-      spyOn(scope, 'moveToSection').and.callThrough();
+      inject(function($injector, _$compile_, _$rootScope_, _$controller_) {
+        CarouselarConstants = $injector.get('CarouselarConstants');
+        timeout = $injector.get('$timeout');
+        compiler = _$compile_;
+        rootScope = _$rootScope_;
+        controller = _$controller_;
+        scope = _$rootScope_.$new();
 
-      rootScope.images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png"];
-      element = compiler(
-        '<carouselar displaying-image-count="3" images="images"></carouselar>')(rootScope);
-      rootScope.$digest();
-    }));
+        controller('CarouselarController', {
+          $scope: scope,
+          $rootScope: rootScope,
+          $window: win,
+          CarouselarConstants: CarouselarConstants
+        });
+
+        spyOn(scope, 'moveToSection').and.callThrough();
+        spyOn(win, 'unbind').and.returnValue(true);
+
+        rootScope.images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png"];
+        element = compiler(
+          '<carouselar displaying-image-count="3" images="images"></carouselar>')(scope);
+      });
+    });
 
     it('should initialize properly', function() {
       expect(scope.images.length).toBe(7);
       expect(element.isolateScope().maxImageCount).toBe(3);
+    });
+
+    it('by default display image count should be 1', function() {
+      element = compiler('<carouselar images="images"></carouselar>')(scope);
+      expect(element.isolateScope().maxImageCount).toBe(1);
     });
 
     it('resize() should work', function() {
@@ -49,11 +62,18 @@ describe('Carouselar', function() {
 
       // landscape
       scope.onResize(null, 800);
+      timeout.flush();
       expect(scope.displayingImageCount).toBe(Math.ceil(scope.maxImageCount / 2));
 
       // portrait
       scope.onResize(null, 400);
+      timeout.flush();
       expect(scope.displayingImageCount).toBe(1);
+    });
+
+    it('should remove resize listener when the scope is destroyed', function() {
+      rootScope.$destroy();
+      expect(win.unbind).toHaveBeenCalled();
     });
 
     it('when displaying image count is changed section & image width should be updated', function() {
@@ -130,6 +150,36 @@ describe('Carouselar', function() {
     it('createArray() should work', function() {
       expect(scope.createArray(2)).toEqual(new Array(2));
       expect(scope.createArray(null)).toEqual([]);
+    });
+  });
+
+  describe('CarouselarImageController', function() {
+
+    beforeEach(inject(function($injector, _$compile_, _$rootScope_, _$controller_) {
+      compiler = _$compile_;
+      rootScope = _$rootScope_;
+      controller = _$controller_;
+      scope = _$rootScope_.$new();
+
+      controller('CarouselarImageController', {
+        $scope: scope,
+        $rootScope: rootScope
+      });
+
+      spyOn(scope, '$apply').and.callThrough();
+
+      element = compiler('<div carouselar-image></div>')(rootScope);
+      rootScope.$digest();
+    }));
+
+    it('initially should be loading', function() {
+      expect(scope.isLoading).toBe(true);
+    });
+
+    it('onLoad should work', function() {
+      scope.onLoad();
+      expect(scope.isLoading).toBe(false);
+      expect(scope.$apply).toHaveBeenCalled();
     });
   });
 });
