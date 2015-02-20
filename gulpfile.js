@@ -11,6 +11,8 @@ var runSequence = require('run-sequence');
 var stylish = require('jshint-stylish');
 var http = require('http');
 var st = require('st');
+var path = require('path');
+var karma = require('karma').server;
 var pkg = require('./package');
 var jshintConfig = pkg.jshintConfig;
 
@@ -61,6 +63,8 @@ gulp.task('sass', function() {
 
 gulp.task('concat', function() {
   return gulp.src([
+      SOURCE.SCRIPTS + 'constants.js',
+      SOURCE.SCRIPTS + 'controllers.js',
       SOURCE.SCRIPTS + 'directives.js',
       SOURCE.SCRIPTS + 'module.js'
     ])
@@ -103,6 +107,17 @@ gulp.task('server', function(cb) {
       cache: false
     })
   ).listen(8080, cb);
+});
+
+gulp.task('test', function(cb) {
+  var config = {
+    configFile: path.join(__dirname, '/test/karma.conf.js')
+  };
+  config.singleRun = false;
+
+  karma.start(config, function() {
+    cb();
+  });
 });
 
 gulp.task('build', ['clean'], function(cb) {
