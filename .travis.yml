@@ -4,9 +4,9 @@ before_install:
   - npm install --global gulp
   - npm install --global bower
   - npm install --global protractor
-  - webdriver-manager update
-install: npm install
-before_script:
+  - webdriver-manager update --standalone
+  - webdriver-manager start &
   - bower install
+install: npm install
 script: gulp
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
