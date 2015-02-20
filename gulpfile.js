@@ -7,6 +7,7 @@ var rename = require('gulp-rename');
 var header = require('gulp-header');
 var sass = require('gulp-sass');
 var livereload = require('gulp-livereload');
+var protractor = require("gulp-protractor").protractor;
 var del = require('del');
 var runSequence = require('run-sequence');
 var stylish = require('jshint-stylish');
@@ -131,6 +132,14 @@ gulp.task('test', function(cb) {
   });
 });
 
+gulp.task('e2e', function(cb) {
+  return gulp.src([PATH.TEST + 'e2e/*.js'])
+    .pipe(protractor({
+        configFile: path.join(__dirname, '/test/conf.js'),
+        args: ['--baseUrl', 'http://127.0.0.1:8000']
+    })).on('error', function(e) { throw e });
+});
+
 gulp.task('build', ['clean'], function(cb) {
   runSequence(
     'sass',
@@ -138,6 +147,8 @@ gulp.task('build', ['clean'], function(cb) {
     'uglify',
     'minify',
     'banner',
+    'test',
+    'e2e',
     cb);
 });
 
