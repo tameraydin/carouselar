@@ -1,7 +1,6 @@
 {
   "name": "carouselar",
   "description": "Angular Carousel",
-  "private": true,
   "version": "0.1.0",
   "main": [
     "dist/carouselar.js",
@@ -33,9 +32,11 @@
     "node_modules",
     "test",
     "src",
+    ".editorconfig",
     ".gitignore",
     "gulpfile.js",
-    "package.json"
+    "package.json",
+    "demo"
   ],
   "devDependencies": {
     "angular-mocks": "~1.3.13"
