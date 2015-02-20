@@ -1,4 +1,4 @@
-# Carouselar
+# Carouselar [![Build Status](http://img.shields.io/travis/tameraydin/carouselar/master.svg?style=flat-square)](https://travis-ci.org/tameraydin/carouselar)
 
 - ~4kb
 - Responsive
