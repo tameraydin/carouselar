@@ -51,7 +51,7 @@
             win.bind('resize', scope.onResize);
             scope.onResize();
 
-            scope.$on('destroy', function() {
+            scope.$on('$destroy', function() {
               win.unbind(scope.onResize);
             });
           }
