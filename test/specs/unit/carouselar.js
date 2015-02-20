@@ -32,7 +32,7 @@ describe('Carouselar', function() {
 
       rootScope.images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png"];
       element = compiler(
-        '<carouselar max-image-count="3" images="images"></carouselar>')(rootScope);
+        '<carouselar displaying-image-count="3" images="images"></carouselar>')(rootScope);
       rootScope.$digest();
     }));
 
