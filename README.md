@@ -2,6 +2,7 @@
 
 ## Features
 
+- ~4kb
 - Responsive
 - Lazy Loading
 
@@ -23,7 +24,7 @@
 ```
 
 ```
-<carouselar max-image="3" images="myImages" />
+<carouselar max-image-count="3" images="myImages" />
 ```
 
 ## API
