@@ -74,7 +74,7 @@
             var windowWidth = _width || $window.innerWidth;
 
             if (windowWidth < CarouselarConstants.BREAKPOINTS.LANDSCAPE) {
-              displayingImageCount = $window.Math.ceil($scope.maxImageCount / 2);
+              displayingImageCount = Math.ceil($scope.maxImageCount / 2);
 
               if (windowWidth < CarouselarConstants.BREAKPOINTS.PORTRAIT) {
                 displayingImageCount = 1;
