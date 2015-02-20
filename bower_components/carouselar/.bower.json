@@ -1,0 +1,54 @@
+{
+  "name": "carouselar",
+  "description": "Angular Carousel",
+  "version": "0.1.0",
+  "main": [
+    "dist/carouselar.js",
+    "dist/carouselar.css"
+  ],
+  "keywords": [
+    "angular",
+    "carousel",
+    "lazy load",
+    "responsive"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tameraydin/carouselar.git"
+  },
+  "homepage": "http://tamerayd.in/carouselar",
+  "authors": [
+    {
+      "name": "Tamer Aydin",
+      "homepage": "http://tamerayd.in"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.3.13"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "src",
+    ".editorconfig",
+    ".gitignore",
+    "gulpfile.js",
+    "package.json",
+    "demo"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.3.13"
+  },
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "08b83db5884655cf2338050e3d724638ee1cdf0b"
+  },
+  "_source": "git://github.com/tameraydin/carouselar.git",
+  "_target": "~0.1.0",
+  "_originalSource": "carouselar",
+  "_direct": true
+}

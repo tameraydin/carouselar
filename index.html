@@ -1,88 +1,25 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Carouselar : Angular Carousel">
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Carouselar : Angular Carousel">
+  <title>Carouselar</title>
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="bower_components/carouselar/dist/carouselar.min.css">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/carouselar/dist/carouselar.min.js"></script>
 
-    <title>Carouselar</title>
-  </head>
+  <script src="scripts/index.js"></script>
 
-  <body>
+</head>
+<body ng-app="demoApp" ng-controller="demoMainController" ng-cloak>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/tameraydin/carouselar">View on GitHub</a>
+  <div class="demo-wrapper">
+    <carouselar max-image-count="3" images="demoImages"></carouselar>
+  </div>
 
-          <h1 id="project_title">Carouselar</h1>
-          <h2 id="project_tagline">Angular Carousel</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/tameraydin/carouselar/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/tameraydin/carouselar/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a id="carouselar" class="anchor" href="#carouselar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Carouselar</h1>
-
-<h2>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
-
-<ul>
-<li>~4kb</li>
-<li>Responsive</li>
-<li>Lazy Loading</li>
-</ul>
-
-<h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
-
-<p><code>bower install carouselar</code></p>
-
-<h2>
-<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
-
-<pre><code>...
-  $scope.myImages = [
-    'img1.png',
-    'img2.png',
-    'img3.png',
-    'img4.png',
-  ];
-...
-</code></pre>
-
-<pre><code>&lt;carouselar max-image-count="3" images="myImages" /&gt;
-</code></pre>
-
-<h2>
-<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h2>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>MIT <a href="http://tameraydin.mit-license.org/">http://tameraydin.mit-license.org/</a></p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Carouselar maintained by <a href="https://github.com/tameraydin">tameraydin</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+</body>
 </html>
