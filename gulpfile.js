@@ -113,7 +113,7 @@ gulp.task('watch', ['server'], function() {
 
 var server;
 gulp.task('server', function(cb) {
-  _server = http.createServer(
+  server = http.createServer(
     st({
       path: __dirname,
       index: 'index.html',
@@ -126,7 +126,6 @@ gulp.task('test-unit', function(cb) {
   var config = {
     configFile: path.join(__dirname, '/test/karma.conf.js')
   };
-  // config.singleRun = false;
 
   karma.start(config, function() {
     cb();
