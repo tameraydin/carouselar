@@ -16,7 +16,7 @@
         $scope.singleImageWidth = '100%';
 
         $scope.createArray = function(num) {
-          return new Array(num);
+          return new Array(num || 0);
         };
 
         $scope.prev = function() {
@@ -67,11 +67,11 @@
         };
 
         $scope.resizeTimer = null;
-        $scope.onResize = function() {
+        $scope.onResize = function(event, _width) {
           $timeout.cancel($scope.resizeTimer);
           $scope.resizeTimer = $timeout(function() {
             var displayingImageCount = $scope.maxImageCount;
-            var windowWidth = $window.innerWidth;
+            var windowWidth = _width || $window.innerWidth;
 
             if (windowWidth < CarouselarConstants.BREAKPOINTS.LANDSCAPE) {
               displayingImageCount = $window.Math.ceil($scope.maxImageCount / 2);
