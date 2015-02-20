@@ -20,7 +20,10 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'dist/carouselar.js',
+      'src/scripts/constants.js',
+      'src/scripts/controllers.js',
+      'src/scripts/directives.js',
+      'src/scripts/module.js',
       'test/specs/unit/*.js'
     ],
 
@@ -43,7 +46,13 @@ module.exports = function(config) {
     reporters: ['progress', 'coverage'],
 
     preprocessors: {
-      'dist/carouselar.js': ['coverage']
+      'src/scripts/*.js': ['coverage']
+    },
+
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage/',
+      subdir: '.'
     },
 
     // Which plugins to enable
