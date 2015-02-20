@@ -1,7 +1,6 @@
 {
   "name": "carouselar",
   "description": "Angular Carousel",
-  "private": true,
   "version": "0.1.0",
   "main": "dist/carouselar.js",
   "keywords": [
