@@ -111,8 +111,9 @@ gulp.task('watch', ['server'], function() {
   gulp.watch(SOURCE.STYLES + '*.scss', ['sass']);
 });
 
+var server;
 gulp.task('server', function(cb) {
-  http.createServer(
+  _server = http.createServer(
     st({
       path: __dirname,
       index: 'index.html',
@@ -121,7 +122,7 @@ gulp.task('server', function(cb) {
   ).listen(8080, cb);
 });
 
-gulp.task('test', function(cb) {
+gulp.task('test-unit', function(cb) {
   var config = {
     configFile: path.join(__dirname, '/test/karma.conf.js')
   };
@@ -132,13 +133,16 @@ gulp.task('test', function(cb) {
   });
 });
 
-gulp.task('e2e', function(cb) {
-  return gulp.src([PATH.TEST + 'e2e/*.js'])
+gulp.task('test-e2e', ['server'], function(cb) {
+  return gulp.src([PATH.TEST + 'specs/e2e/*.js'])
     .pipe(protractor({
-      configFile: path.join(__dirname, '/test/conf.js'),
+      configFile: path.join(__dirname, '/test/e2e.conf.js'),
       args: ['--baseUrl', 'http://127.0.0.1:8000']
     })).on('error', function(e) {
+      server.close();
       throw e
+    }).on('end', function() {
+      server.close();
     });
 });
 
@@ -149,8 +153,8 @@ gulp.task('build', ['clean'], function(cb) {
     'uglify',
     'minify',
     'banner',
-    'test',
-    'e2e',
+    'test-unit',
+    'test-e2e',
     cb);
 });
 

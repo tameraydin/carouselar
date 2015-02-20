@@ -1,7 +1,7 @@
 describe('Carouselar Demo Page', function() {
 
   beforeEach(function() {
-    browser.get('http://tamerayd.in/carouselar/');
+    browser.get('http://127.0.0.1:8080/demo/index.html');
   });
 
   it('should list images', function() {

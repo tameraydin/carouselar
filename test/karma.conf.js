@@ -21,7 +21,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'dist/carouselar.js',
-      'test/specs/*.js'
+      'test/specs/unit/*.js'
     ],
 
     // list of files / patterns to exclude
