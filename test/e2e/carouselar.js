@@ -14,7 +14,7 @@ describe('Carouselar Demo Page', function() {
     expect(element.all(by.tagName('img')).count()).toEqual(3);
   });
 
-  it('next button should work', function() {
+  it('next & lazy load should work', function() {
     var nextButton = element.all(by.className('carouselar__navigation__button--next'));
 
     nextButton.click();

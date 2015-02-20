@@ -1,7 +1,5 @@
 # Carouselar
 
-## Features
-
 - ~4kb
 - Responsive
 - Lazy Loading
