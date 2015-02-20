@@ -124,12 +124,7 @@ gulp.task('server', function(cb) {
 
 gulp.task('test-unit', function(cb) {
   var config = {
-    configFile: path.join(__dirname, '/test/karma.conf.js'),
-    coverageReporter: {
-      type: 'html',
-      dir: 'coverage/',
-      subdir: '.'
-    }
+    configFile: path.join(__dirname, '/test/karma.conf.js')
   };
 
   karma.start(config, function() {
