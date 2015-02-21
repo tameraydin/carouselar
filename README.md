@@ -3,6 +3,7 @@
 [Demo](http://tamerayd.in/carouselar/)
 
 - ~4kb
+- CSS Transitions
 - Responsive
 - Lazy Loading
 
@@ -19,7 +20,7 @@ Include main files:
 <script src="bower_components/carouselar/dist/carouselar.min.js"></script>
 ```
 
-Include Carouselar as a dependency in your Angular application:
+Include ``carouselar`` module as a dependency into your app:
 ```javascript
 angular
   .module('yourApp', [
