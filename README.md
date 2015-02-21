@@ -1,4 +1,4 @@
-# Carouselar [![Build Status](http://img.shields.io/travis/tameraydin/carouselar/master.svg?style=flat-square)](https://travis-ci.org/tameraydin/carouselar)
+# Carouselar [![Build Status](http://img.shields.io/travis/tameraydin/carouselar/master.svg?style=flat-square)](https://travis-ci.org/tameraydin/carouselar) [![Coverage Status](https://img.shields.io/coveralls/tameraydin/carouselar/master.svg?style=flat-square)](https://coveralls.io/r/tameraydin/carouselar?branch=master)
 
 - ~4kb
 - Responsive
