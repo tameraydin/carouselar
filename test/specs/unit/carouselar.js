@@ -107,8 +107,6 @@ describe('Carouselar', function() {
 
       scope.moveToSection(5);
       expect(scope.activeSection).toBe(0);
-
-      //TODO: visibleImages
     });
 
     it('next() should work', function() {
