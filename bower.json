@@ -33,7 +33,7 @@
     "test",
     "src",
     "demo",
-    ".travis.yml"
+    ".travis.yml",
     ".editorconfig",
     ".gitignore",
     "gulpfile.js",
