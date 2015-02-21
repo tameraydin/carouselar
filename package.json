@@ -49,6 +49,6 @@
     "st": "^0.5.3"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test-unit"
   }
 }
