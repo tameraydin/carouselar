@@ -32,11 +32,12 @@
     "node_modules",
     "test",
     "src",
+    "demo",
+    ".travis.yml"
     ".editorconfig",
     ".gitignore",
     "gulpfile.js",
-    "package.json",
-    "demo"
+    "package.json"
   ],
   "devDependencies": {
     "angular-mocks": "~1.3.13"
