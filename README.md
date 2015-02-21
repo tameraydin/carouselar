@@ -1,4 +1,4 @@
-# Carouselar [![Build Status](http://img.shields.io/travis/tameraydin/carouselar/master.svg?style=flat-square)](https://travis-ci.org/tameraydin/carouselar) [![Coverage Status](https://img.shields.io/coveralls/tameraydin/carouselar/master.svg?style=flat-square)](https://coveralls.io/r/tameraydin/carouselar?branch=master)
+# Carouselar [![Build Status](http://img.shields.io/travis/tameraydin/carouselar/master.svg?style=flat-square)](https://travis-ci.org/tameraydin/carouselar) [![Code Climate](http://img.shields.io/codeclimate/github/tameraydin/carouselar.svg?style=flat-square)](https://codeclimate.com/github/tameraydin/carouselar/dist/carouselar.js) [![Coverage Status](https://img.shields.io/coveralls/tameraydin/carouselar/master.svg?style=flat-square)](https://coveralls.io/r/tameraydin/carouselar?branch=master)
 
 [Demo](http://tamerayd.in/carouselar/)
 
