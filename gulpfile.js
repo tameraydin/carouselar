@@ -91,7 +91,7 @@ gulp.task('minify', function() {
       basename: pkg.name,
       suffix: '.min'
     }))
-    .pipe(gulp.dest(PATH.DIST))
+    .pipe(gulp.dest(PATH.DIST));
 });
 
 gulp.task('banner', function() {
@@ -132,14 +132,14 @@ gulp.task('test-unit', function(cb) {
   });
 });
 
-gulp.task('test-e2e', ['server'], function(cb) {
+gulp.task('test-e2e', ['server'], function() {
   return gulp.src([PATH.TEST + 'specs/e2e/*.js'])
     .pipe(protractor({
       configFile: path.join(__dirname, '/test/e2e.conf.js'),
       args: ['--baseUrl', 'http://127.0.0.1:8000']
     })).on('error', function(e) {
       server.close();
-      throw e
+      throw e;
     }).on('end', function() {
       server.close();
     });
