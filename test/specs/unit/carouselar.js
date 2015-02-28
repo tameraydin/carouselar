@@ -74,6 +74,7 @@ describe('Carouselar', function() {
     it('should remove resize listener when the scope is destroyed', function() {
       rootScope.$destroy();
       expect(win.unbind).toHaveBeenCalled();
+      expect(win.unbind.calls.mostRecent().args[0]).toBe('resize');
     });
 
     it('when displaying image count is changed section & image width should be updated', function() {
