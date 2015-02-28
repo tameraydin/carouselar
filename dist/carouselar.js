@@ -193,7 +193,7 @@
             scope.onResize();
 
             scope.$on('$destroy', function() {
-              win.unbind(scope.onResize);
+              win.unbind('resize', scope.onResize);
             });
           }
         };
