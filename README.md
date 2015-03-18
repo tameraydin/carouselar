@@ -11,7 +11,7 @@
 
 Install Carouselar via [Bower](http://bower.io):
 ```bash
-bower install carouselar
+bower install carouselar --production
 ```
 
 Include main files:
