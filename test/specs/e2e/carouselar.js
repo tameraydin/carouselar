@@ -2,6 +2,7 @@ describe('Carouselar Demo Page', function() {
 
   beforeEach(function() {
     browser.get('http://127.0.0.1:8080/demo/index.html');
+    browser.manage().window().setSize(1200, 960);
   });
 
   it('should list images', function() {
@@ -10,7 +11,7 @@ describe('Carouselar Demo Page', function() {
     expect(imageList.count()).toEqual(17);
   });
 
-  it('should display only 3 images', function() {
+  it('initially should display only 3 images', function() {
     expect(element.all(by.tagName('img')).count()).toEqual(3);
   });
 
