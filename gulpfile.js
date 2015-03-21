@@ -135,7 +135,8 @@ gulp.task('test-unit', function(cb) {
 gulp.task('test-e2e', ['server'], function() {
   return gulp.src([PATH.TEST + 'specs/e2e/*.js'])
     .pipe(protractor({
-      configFile: path.join(__dirname, '/test/e2e.conf.js'),
+      configFile: path.join(__dirname, (process.env.TRAVIS) ?
+        '/test/e2e.travis.conf.js' : '/test/e2e.conf.js'),
       args: ['--baseUrl', 'http://127.0.0.1:8000']
     })).on('error', function(e) {
       server.close();
